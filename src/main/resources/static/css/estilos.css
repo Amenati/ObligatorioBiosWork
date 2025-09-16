@@ -1,0 +1,202 @@
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-y: scroll;
+}
+ 
+/*.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}*/
+ 
+header.logo-bioswork {
+    height: 100px;
+    padding: 20px;
+    background-color: rgb(146, 220, 243);
+    background-image: url(/imagenes/logo.jpg);
+    background-size: cover;
+    background-position: center;
+    color: white;
+}
+ 
+header.logo-bioswork h1 {
+    margin: 0;
+    font-size: 3em;
+    line-height: 100px;
+}
+ 
+nav.menu-principal {
+    height: 40px;
+    position: sticky;
+    top: 0;
+    background-color: rgb(105, 163, 180);
+}
+ 
+nav.menu-principal > * {
+    float: right;
+}
+ 
+nav.menu-principal > *:first-child {
+    float: left;
+}
+ 
+nav.menu-principal ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+ 
+nav.menu-principal ul li {
+    position: relative;
+    display: block;
+    float: left;
+    white-space: nowrap;
+}
+ 
+nav.menu-principal li a {
+    display: block;
+    padding: 0 10px;
+    line-height: 40px;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+}
+ 
+nav.menu-principal li:hover a {
+    background-color: rgb(74, 114, 126);
+    transition: background-color .33s;
+}
+ 
+/*nav.menu-principal li ul {
+    position: absolute;
+    display: block;
+    visibility: hidden;
+    opacity: 0;
+    background-color: tomato;
+    transition: visibility 0s, opacity .33s;
+}
+ 
+nav.menu-principal ul ~ ul:last-child ul {
+    right: 0px;
+}
+ 
+nav.menu-principal li:hover ul {
+    visibility: visible;
+    opacity: 1;
+}
+ 
+nav.menu-principal li:hover li {
+    float: none;
+}
+ 
+nav.menu-principal li:hover li:hover a {
+    background-color: lightsalmon;
+}*/
+ 
+main.contenido {
+    margin: 20px;
+}
+ 
+/*div.enlaces-interes {
+    display: inline-block;
+    border: 1px solid firebrick;
+    border-radius: 10px;
+    background-color: mistyrose;
+    overflow: hidden;
+}
+ 
+div.enlaces-interes h4 {
+    margin: 0;
+    padding: 8px;
+    background-color: firebrick;
+    color: white;
+}
+ 
+div.enlaces-interes ul {
+    margin: 10px;
+    padding: 0;
+    list-style-type: none;
+}
+ 
+div.enlaces-interes li {
+    line-height: 1.5em;
+}
+ 
+div.enlaces-interes a {
+    text-decoration: none;
+    color: firebrick;
+    font-weight: bold;
+}
+ */
+
+
+form div {
+    margin-top: 1.5em;
+}
+
+label {
+    font-weight: bold;
+}
+
+
+
+
+/*.error {
+    border: 2px solid red;  
+}*/
+
+
+/* #### Formularios #### */
+
+.title-form {
+    display: flex;
+    justify-content: center;
+    color: rgb(0, 113, 188);
+}
+
+.formCrud {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 280px;
+    /*height: 490px;*/
+    padding: 18px;
+    border-radius: 5%;
+    box-shadow: 4px 4px rgba(128, 108, 23, .4);
+    background-color: white;
+}
+
+label:first-child {
+    font-weight: normal;
+    display: block;
+    margin-bottom: .25em;
+    color: rgb(0, 113, 188);
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    padding-bottom: 7px;
+}
+
+
+.input-text {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    color: black;
+    border: 1px solid #cac6c6;    
+    padding: 8px 12px;
+    border-radius: 5px;
+}
+
+.input-button {
+    background-color: rgb(0, 106, 177);
+    color: white;
+    padding: 9px 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+
+

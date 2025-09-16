@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org" th:replace="~{fragmentos/plantilla-maestra-clientes::html(~{::title}, ~{::body})}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ofertas de trabajo</title>
+</head>
+<body th:remove="tag">
+    <form th:action="@{/ofertas/modificar}" method="post" th:object="${oferta}" class="formCrud">
+        <div>
+            <h1 class="title-form">Modificar oferta</h1>
+        </div>       
+        <div>
+            <label for="id">Número</label>
+            <input type="text" th:field="*{id}" class="input-text" readonly>
+            <p th:errors="*{id}" style="color: red; font-size: 12px;"></p>
+        </div>
+        <div>
+            <label for="fechaApertura">Fecha Apertura</label>
+            <input type="text" th:field="*{fechaApertura}" class="input-text" readonly>
+            <p th:errors="*{fechaApertura}" style="color: red; font-size: 12px;"></p>
+        </div>
+        <div>
+            <label for="area">Area</label>
+            <select name="area" id="">
+                <option value="" selected>Selec. un área</option>
+                <option th:each="a : ${area}" th:text="${a.nombre}"></option>
+            </select>
+            <p th:errors="*{area}" style="color: red; font-size: 12px;"></p>
+        </div>         
+        <div>
+            <label for="titulo">Título</label>
+            <input type="text" th:field="*{titulo}" class="input-text">
+            <p th:errors="*{titulo}" style="color: red; font-size: 12px;"></p>
+        </div>
+        <div>
+            <label for="descripcion">Descripción</label>
+            <textarea th:field="*{descripcion}" name="" id=""></textarea>
+            <p th:errors="*{descripcion}" style="color: red; font-size: 12px;"></p>
+        </div>
+        <div>
+            <label for="puestosVacantes">Puestos vacantes</label>
+            <input type="number" th:field="*{puestosVacantes}" class="input-text">
+            <p th:errors="*{puestosVacantes}" style="color: red; font-size: 12px;"></p>
+        </div>
+        <div>
+            <label for="fechaCierre">Fecha de finalización</label>
+            <input type="date" th:field="*{fechaCierre}" class="input-text">
+            <p th:errors="*{fechaCierre}" style="color: red; font-size: 12px;"></p>
+        </div>      
+        <div>
+            <input type="submit" value="Modificar" class="input-button">
+        </div>
+    </form>
+
+    <p th:if="${mensaje}" th:utext="${mensaje}"></p>
+</body>
+</html>

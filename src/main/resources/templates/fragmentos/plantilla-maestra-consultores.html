@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org" th:fragment="html(titulo, contenido)">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:replace="${titulo}">Document</title>
+
+    <link rel="stylesheet" th:href="@{/css/estilos.css}">
+</head>
+<body>
+    <header class="logo-bioswork">
+        
+    </header>
+    <nav class="menu-principal">
+        <ul>
+            <li><a href="">Consultores</a></li>
+            <li><a href="">Clientes</a></li>
+            <li><a th:href="@{/areas/listar}">Areas</a></li>
+        </ul>
+        <ul>
+            <li><a href="">Salir</a></li>
+        </ul>
+    </nav>
+    <main class="contenido" th:insert="${contenido}"></main>
+</body>
+</html>
