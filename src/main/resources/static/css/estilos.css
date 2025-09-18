@@ -198,5 +198,9 @@ label:first-child {
     font-size: 16px;
 }
 
+input[type=search] {
+    padding: 3px;
+}
+
 
 

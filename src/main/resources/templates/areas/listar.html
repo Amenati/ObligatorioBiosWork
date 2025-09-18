@@ -7,5 +7,36 @@
 </head>
 <body th:remove="tag">
     <h1>Áreas</h1>
+    <form id="busqueda">
+        <div>
+            <input type="search" name="criterio" th:value="${param.criterio}" id="criterio" placeholder="código de area"> <input type="submit" value="Buscar" class="input-button">
+        </div>
+    </form>
+    <p><a href="@{/areas/ingresar}" title="Ingresar"></a></p>
+    <table>
+        <tr>
+            <th>Código</th>
+            <th>Nombre</th>
+        </tr>
+        <tr th:each="a : ${area}">
+            <td th:text="${a.id}"></td>
+            <td th:text="${a.nombre}"></td>
+            <td>
+                <a th:href="@{/areas/{codigo}(codigo=${a.id})}" title="Ver Detalle"><i class="icono icono-ver"></i></a>&nbsap;&nbsp;
+                <a th:href="@{/areas/modificar(codigo=${a.id})}" title="Modificar"><i class="icono icono-modificar"></i></a>&nbsp;&nbsp;
+                <a th:href="@{/areas/eliminar(codigo=${a.id})}" title="Eliminar"><i class="icono icono-eliminar"></i></a>
+            </td>
+        </tr>
+    </table>
+    <p th:if="${mensaje}" th:utext="${mensaje}"></p>
+
+    <script>
+        document.getElementById('busqueda').addEventListener('search', function() {
+            document.getElementById('busqueda').submit();
+        });
+
+        document.getElementById('criterio').focus();
+        document.getElementById('criterio').select();
+    </script>
 </body>
 </html>

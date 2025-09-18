@@ -6,43 +6,7 @@
     <title>Ofertas de trabajo</title>
 </head>
 <body th:remove="tag">
-    <form th:action="@{/ofertas/ingresar}" method="post" th:object="${oferta}" class="formCrud">
-        <div>
-            <h1 class="title-form">Ingresar oferta</h1>
-        </div>
-        <div>
-            <label for="area">Area</label>
-            <select name="area" id="">
-                <option value="" selected>Selec. un área</option>
-                <option th:each="a : ${area}" th:text="${a.nombre}"></option>
-            </select>
-            <p th:errors="*{area}" style="color: red; font-size: 12px;"></p>
-        </div>
-        <div>
-            <label for="titulo">Título</label>
-            <input type="text" th:field="*{titulo}" class="input-text">
-            <p th:errors="*{titulo}" style="color: red; font-size: 12px;"></p>
-        </div>
-        <div>
-            <label for="descripcion">Descripción</label>
-            <textarea th:field="*{descripcion}" name="" id=""></textarea>
-            <p th:errors="*{descripcion}" style="color: red; font-size: 12px;"></p>
-        </div>
-        <div>
-            <label for="puestosVacantes">Puestos vacantes</label>
-            <input type="number" th:field="*{puestosVacantes}" step="1.0" class="input-text">
-            <p th:errors="*{puestosVacantes}" style="color: red; font-size: 12px;"></p>
-        </div>
-        <div>
-            <label for="fechaCierre">Fecha de finalización</label>
-            <input type="date" th:field="*{fechaCierre}" class="input-text">
-            <p th:errors="*{fechaCierre}" style="color: red; font-size: 12px;"></p>
-        </div>      
-        <div>
-            <input type="submit" value="Ingresar" class="input-button">
-        </div>
-    </form>
-
+    <div th:replace="~{fragmentos/formulario-oferta('Agregar')}"></div>
     <p th:if="${mensaje}" th:utext="${mensaje}"></p>
 </body>
 </html>

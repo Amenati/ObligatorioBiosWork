@@ -6,19 +6,15 @@
     <title>Ofertas de trabajo</title>
 </head>
 <body th:remove="tag">
-    <form th:action="@{/clientes/eliminar}" method="post" th:object="${cliente}" class="formCrud">
-        <div>
-            <h1 class="title-form">Eliminar oferta</h1>
-        </div>
-        <div>
-            <label for="id">Número de oferta</label>
-            <input type="text" th:field="*{id}" class="input-text" readonly>
-        </div>
-        <div>
-            <input type="submit" value="Eliminar" class="input-button">
-        </div>
-    </form>
-
+    <h1>Eliminar oferta</h1>
+    <th:block th:if="${area}">
+        <p>Está seguro que desea eliminar la oferta número <strong th:text="${oferta.id}"></strong>(<strong th:text="${oferta.titulo}"></strong>)?</p>
+        <form method="post" class="formCrud">      
+            <div>
+                <input type="submit" value="Eliminar" class="input-button">
+            </div>
+        </form>    
+    </th:block>   
     <p th:if="${mensaje}" th:utext="${mensaje}"></p>
 </body>
 </html>

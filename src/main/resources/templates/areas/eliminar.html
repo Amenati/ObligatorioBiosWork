@@ -6,24 +6,15 @@
     <title>Áreas</title>
 </head>
 <body th:remove="tag">
-    <form th:action="@{/areas/eliminar}" method="post" th:object="${area}" class="formCrud">
-        <div>
-            <h1 class="title-form">Eliminar área</h1>
-        </div>
-        <div>
-            <label for="id">Id</label>
-            <input type="text" th:field="*{id}" class="input-text" readonly>
-        </div>
-        <div>
-            <label for="nombre">Área</label>
-            <input type="text" th:field="*{nombre}" class="input-text" readonly>
-            <p th:errors="*{nombre}" style="color: red; font-size: 12px;"></p>
-        </div>
-        <div>
-            <input type="submit" value="Eliminar" class="input-button">
-        </div>
-    </form>
-
+    <h1>Eliminar área</h1>
+    <th:block th:if="${area}">
+        <p>Está seguro que desea eliminar el área <strong th:text="${area.nombre}"></strong>?</p>
+        <form method="post" class="formCrud">      
+            <div>
+                <input type="submit" value="Eliminar" class="input-button">
+            </div>
+        </form>    
+    </th:block>   
     <p th:if="${mensaje}" th:utext="${mensaje}"></p>
 </body>
 </html>

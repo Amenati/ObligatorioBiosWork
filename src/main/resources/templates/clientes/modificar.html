@@ -6,40 +6,9 @@
     <title>Clientes</title>
 </head>
 <body th:remove="tag">
-    <form th:action="@{/clientes/modificar}" method="post" th:object="${cliente}" class="formCrud">
-        <div>
-            <h1 class="title-form">Modificar cliente</h1>
-        </div>
-        <div>
-            <label for="nombreUsuario">Usuario</label>
-            <input type="text" th:field="*{nombreUsuario}" class="input-text" readonly>
-            <p th:errors="*{nombreUsuario}" style="color: red; font-size: 12px;"></p>
-        </div>
-        <div>
-            <label for="contrasena">Contraseña</label>
-            <input type="text" th:field="*{contrasena}" class="input-text">
-            <p th:errors="*{contrasena}" style="color: red; font-size: 12px;"></p>
-        </div>
-        <div>
-            <label for="rut">RUT</label>
-            <input type="text" th:field="*{rut}" class="input-text">
-            <p th:errors="*{rut}" style="color: red; font-size: 12px;"></p>
-        </div>
-        <div>
-            <label for="nombre">Nombre</label>
-            <input type="text" th:field="*{nombre}" class="input-text">
-            <p th:errors="*{nombre}" style="color: red; font-size: 12px;"></p>
-        </div>
-        <div>
-            <label for="url">Url</label>
-            <input type="url" th:field="*{url}" class="input-text">
-            <p th:errors="*{url}" style="color: red; font-size: 12px;"></p>
-        </div>        
-        <div>
-            <input type="submit" value="Modificar" class="input-button">
-        </div>
-    </form>
-
+    <th:block th:if="${cliente}">
+        <div th:replace="~{fragmentos/formulario-cliente(txtBoton = 'Modificar', deshabilitarClave = true, foco = 'contrasena')}"></div>
+    </th:block>
     <p th:if="${mensaje}" th:utext="${mensaje}"></p>
 </body>
 </html>
