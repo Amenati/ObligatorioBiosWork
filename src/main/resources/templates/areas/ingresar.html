@@ -6,19 +6,13 @@
     <title>Áreas</title>
 </head>
 <body th:remove="tag">
-    <form th:action="@{/areas/ingresar}" method="post" th:object="${area}" class="formCrud">
+    <!--<form th:action="@{/areas/ingresar}" method="post" th:object="${area}" class="formCrud">
         <div>
             <h1 class="title-form">Ingresar área</h1>
-        </div>
-        <div>
-            <label for="nombre">Área</label>
-            <input type="text" th:field="*{nombre}" class="input-text">
-            <p th:errors="*{nombre}" style="color: red; font-size: 12px;"></p>
-        </div>
-        <div>
-            <input type="submit" value="Ingresar" class="input-button">
-        </div>
-    </form>
+        </div>-->
+
+        <div th:replace="~{fragmentos/formulario-area('Agregar')}"></div>
+    <!--</form>-->
 
     <p th:if="${mensaje}" th:utext="${mensaje}"></p>
 </body>

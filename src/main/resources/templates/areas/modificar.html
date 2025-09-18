@@ -6,23 +6,14 @@
     <title>Áreas</title>
 </head>
 <body th:remove="tag">
-    <form th:action="@{/areas/modificar}" method="post" th:object="${area}" class="formCrud">
+    <!--<form th:action="@{/areas/modificar}" method="post" th:object="${area}" class="formCrud">
         <div>
             <h1 class="title-form">Modificar área</h1>
-        </div>
-        <div>
-            <label for="id">Id</label>
-            <input type="text" th:field="*{id}" class="input-text" readonly>
-        </div>
-        <div>
-            <label for="nombre">Área</label>
-            <input type="text" th:field="*{nombre}" class="input-text">
-            <p th:errors="*{nombre}" style="color: red; font-size: 12px;"></p>
-        </div>
-        <div>
-            <input type="submit" value="Modificar" class="input-button">
-        </div>
-    </form>
+        </div>-->
+        <th:block th:if="${area}">
+            <div th:replace="~{fragmentos/formulario-area(txtBoton = 'Modificar', deshabilitarClave = true, foco = 'nombre')}"></div>
+        </th:block>
+    <!--</form>-->
 
     <p th:if="${mensaje}" th:utext="${mensaje}"></p>
 </body>

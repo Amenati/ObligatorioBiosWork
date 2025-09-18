@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
 import jakarta.validation.Valid;
-//import uy.edu.bios.ejemplos.bioswork.model.Area;
+import uy.edu.bios.ejemplos.bioswork.dominio.Area;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -34,7 +34,7 @@ public class ControladorArea {
         
         model.addAttribute("mensaje", "Área ingresada correctamente");
 
-        return "areas/listar";
+        return "redirect:/areas/listar";
     }
     
     @GetMapping("/areas/modificar")
@@ -50,7 +50,7 @@ public class ControladorArea {
         
         model.addAttribute("mensaje", "Área modificada correctamente");
 
-        return "areas/listar";
+        return "redirect:/areas/listar";
     }
    
     
