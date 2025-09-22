@@ -9,7 +9,7 @@
     <h1>Áreas</h1>
     <form id="busqueda">
         <div>
-            <input type="search" name="criterio" th:value="${param.criterio}" id="criterio" placeholder="código de area"> <input type="submit" value="Buscar" class="input-button">
+            <input type="search" name="filtro" th:value="${param.filtro}" id="filtro" placeholder="código de area"> <input type="submit" value="Buscar" class="input-button">
         </div>
     </form>
     <p><a href="@{/areas/ingresar}" title="Ingresar"></a></p>
@@ -18,13 +18,13 @@
             <th>Código</th>
             <th>Nombre</th>
         </tr>
-        <tr th:each="a : ${area}">
+        <tr th:each="a : ${areas}">
             <td th:text="${a.id}"></td>
             <td th:text="${a.nombre}"></td>
             <td>
-                <a th:href="@{/areas/{codigo}(codigo=${a.id})}" title="Ver Detalle"><i class="icono icono-ver"></i></a>&nbsap;&nbsp;
-                <a th:href="@{/areas/modificar(codigo=${a.id})}" title="Modificar"><i class="icono icono-modificar"></i></a>&nbsp;&nbsp;
-                <a th:href="@{/areas/eliminar(codigo=${a.id})}" title="Eliminar"><i class="icono icono-eliminar"></i></a>
+                <a th:href="@{/areas/{id}(id=${a.id})}" title="Ver Detalle"><i class="icono icono-detalle"></i></a>&nbsp;&nbsp;
+                <a th:href="@{/areas/modificar(id=${a.id})}" title="Modificar"><i class="icono icono-editar"></i></a>&nbsp;&nbsp;
+                <a th:href="@{/areas/eliminar(id=${a.id})}" title="Eliminar"><i class="icono icono-eliminar"></i></a>
             </td>
         </tr>
     </table>
@@ -35,8 +35,8 @@
             document.getElementById('busqueda').submit();
         });
 
-        document.getElementById('criterio').focus();
-        document.getElementById('criterio').select();
+        document.getElementById('filtro').focus();
+        document.getElementById('filtro').select();
     </script>
 </body>
 </html>

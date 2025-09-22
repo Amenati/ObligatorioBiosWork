@@ -7,5 +7,38 @@
 </head>
 <body th:remove="tag">
     <h1>Clientes</h1>
+    <form id="busqueda">
+        <div>
+            <input type="search" name="filtro" th:value="${param.filtro}" id="filtro" placeholder="código de cliente"> <input type="submit" value="Buscar" class="input-button">
+        </div>
+    </form>
+    <p><a href="@{/clientes/ingresar}" title="Ingresar"></a></p>
+    <table>
+        <tr>
+            <th>Usuario</th>
+            <th>RUT</th>
+            <th>Nombre</th>
+        </tr>
+        <tr th:each="c : ${clientes}">
+            <td th:text="${c.nombreUsuario}"></td>
+            <td th:text="${c.rut}"></td>
+            <td th:text="${c.nombre}"></td>
+            <td>
+                <a th:href="@{/clientes/{nombreUsuario}(nombreUsuario=${c.nombreUsuario})}" title="Ver Detalle"><i class="icono icono-detalle"></i></a>&nbsp;&nbsp;
+                <a th:href="@{/clientes/modificar(nombreUsuario=${c.nombreUsuario})}" title="Modificar"><i class="icono icono-editar"></i></a>&nbsp;&nbsp;
+                <a th:href="@{/clientes/eliminar(nombreUsuario=${c.nombreUsuario})}" title="Eliminar"><i class="icono icono-eliminar"></i></a>
+            </td>
+        </tr>
+    </table>
+    <p th:if="${mensaje}" th:utext="${mensaje}"></p>
+
+    <script>
+        document.getElementById('busqueda').addEventListener('search', function() {
+            document.getElementById('busqueda').submit();
+        });
+
+        document.getElementById('filtro').focus();
+        document.getElementById('filtro').select();
+    </script>
 </body>
 </html>

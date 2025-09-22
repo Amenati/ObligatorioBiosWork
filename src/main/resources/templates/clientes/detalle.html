@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{fragmentos/plantilla-maestra-consultores::html(~{::title}, ~{::body})}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clientes</title>
+</head>
+<body th:remove="tag">
+    <h1>Cliente</h1>
+
+    <th:block th:if="${cliente}">
+        <h2 th:text="${cliente.nombreUsuario}"></h2>
+        <ul>
+            <li><strong>Usuario:</strong><span th:text="${cliente.nombreUsuario}"></span></li>
+            <li><strong>Contraseña:</strong><span th:text="${cliente.contrasena}"></span></li>
+            <li><strong>RUT:</strong><span th:text="${cliente.rut}"></span></li>
+            <li><strong>Nombre:</strong><span th:text="${cliente.nombre}"></span></li>
+            <li><strong>URL:</strong><span th:text="${cliente.url}"></span></li>
+        </ul>
+    </th:block>
+        
+    <p th:if="${mensaje}" th:utext="${mensaje}"></p>
+</body>
+</html>

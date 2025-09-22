@@ -202,5 +202,29 @@ input[type=search] {
     padding: 3px;
 }
 
+i.icono {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background-size: cover;
+    vertical-align: middle;
+}
+/*
+i.icono-ingresar {
+    background-image: url("../imagenes/iconos/add_circle_FILL1_wght400_GRAD0_opsz24.png");
+}*/
+
+i.icono-detalle {
+    background-image: url("../imagenes/iconos/detalle.png");
+}
+
+i.icono-editar {
+    background-image: url("../imagenes/iconos/editar.png");
+}
+
+i.icono-eliminar {
+    background-image: url("../imagenes/iconos/eliminar.png");
+}
+
 
 
