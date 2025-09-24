@@ -3,9 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ofertas de trabajo</title>
+    <title>Ofertas de Trabajo</title>
 </head>
 <body th:remove="tag">
-    <h1>Ofertas de trabajo</h1>
+    <h1>Ofertas de Trabajo</h1>
+    <form id="busqueda">
+        <div>
+            <input type="search" name="filtro" th:value="${param.filtro}" id="filtro" placeholder="id de la oferta"> <input type="submit" value="Buscar" class="input-button">
+        </div>
+    </form>
+    <p><a href="@{/ofertas/ingresar}" title="Ingresar"></a></p>
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Título</th>
+            <th>Fecha de publicación</th>
+            <th>Área</th>
+        </tr>
+        <tr th:each="o : ${ofertas}">
+            <td th:text="${o.id}"></td>
+            <td th:text="${o.titulo}"></td>
+            <td th:text="${o.fechaPublicacion}"></td>
+            <td th:text="${o.area.nombre}"></td>
+            <td>
+                <a th:href="@{/ofertas/{id}(id=${o.id})}" title="Ver Detalle"><i class="icono icono-detalle"></i></a>&nbsp;&nbsp;
+                <a th:href="@{/ofertas/modificar(id=${o.id})}" title="Modificar"><i class="icono icono-editar"></i></a>&nbsp;&nbsp;
+                <a th:href="@{/ofertas/eliminar(id=${o.id})}" title="Eliminar"><i class="icono icono-eliminar"></i></a>
+            </td>
+        </tr>
+    </table>
+    <p th:if="${mensaje}" th:utext="${mensaje}"></p>
+
+    <script>
+        document.getElementById('busqueda').addEventListener('search', function() {
+            document.getElementById('busqueda').submit();
+        });
+
+        document.getElementById('filtro').focus();
+        document.getElementById('filtro').select();
+    </script>
 </body>
 </html>
