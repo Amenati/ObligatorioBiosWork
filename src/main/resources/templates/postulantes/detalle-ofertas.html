@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{fragmentos/plantilla-maestra-postulantes::html(~{::title}, ~{::body})}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oferta de Trabajo</title>
+</head>
+<body th:remove="tag">
+    <h1>Oferta de Trabajo</h1>
+
+    <th:block th:if="${oferta}">
+        <h2 th:text="${oferta.id} - ${oferta.titulo}"></h2>
+        <ul>
+            <li><strong>Id:</strong><span th:text="${oferta.id}"></span></li>
+            <li><strong>Título:</strong><span th:text="${oferta.titulo}"></span></li>
+            <li><strong>Fecha de publicación:</strong><span th:text="${oferta.fechaPublicacion}"></span></li>
+            <li><strong>Fecha de cierre:</strong><span th:text="${oferta.fechaCierre}"></span></li>
+            <li><strong>Área:</strong><span th:text="${oferta.area.nombre}"></span></li>
+            <li><strong>Descripción:</strong><span th:text="${oferta.descripcion}"></span></li>
+            <li><strong>Puestos vacantes:</strong><span th:text="${oferta.vacantes}"></span></li>
+        </ul>
+
+        <a th:href="@{/ofertas/{id}(id=${o.id})}" title="Postular / Cancelar"></a>
+    </th:block>
+        
+    <p th:if="${mensaje}" th:utext="${mensaje}"></p>
+</body>
+</html>
