@@ -1,0 +1,24 @@
+<div xmlns:th="http://www.thymeleaf.org" th:fragment="formulario-area(txtBoton)" th:with="deshabilitarClave = ${deshabilitarClave} ?: false, foco = ${foco} ?: 'id'">
+    <form method="post" th:object="${area}" class="formCrud">
+        <div>
+            <h1 class="title-form" th:text="${txtBoton} + ' área'"></h1>
+        </div>
+         <div> <!-- ESTE CAMPO VA??????-->
+            <label for="id">Id</label>
+            <input type="text" th:field="*{id}" th:disabled="${deshabilitarClave}" class="input-text">
+        </div>
+        <div>
+            <label for="nombre">Área</label>
+            <input type="text" th:field="*{nombre}" class="input-text">
+            <p th:errors="*{nombre}" style="color: red; font-size: 12px;"></p>
+        </div>
+        <div>
+            <input type="submit" th:value="${txtBoton}" class="input-button">
+        </div>
+    </form>
+
+    <script th:inline="javascript">
+        document.getElementById([[${foco}]]).focus();
+        document.getElementById([[${foco}]]).select();
+    </script>
+</div>

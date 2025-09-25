@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org" th:replace="~{fragmentos/plantilla-maestra-postulantes::html(~{::title}, ~{::body})}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Postulantes</title>
+</head>
+<body th:remove="tag">
+    <th:block th:if="${postulante}">
+        <div th:replace="~{fragmentos/formulario-postulante(txtBoton = 'Modificar', deshabilitarClave = true, foco = 'contrasena')}"></div>
+    </th:block>
+
+    <p th:if="${mensaje}" th:utext="${mensaje}"></p>
+</body>
+</html>

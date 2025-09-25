@@ -1,0 +1,25 @@
+<div xmlns:th="http://www.thymeleaf.org" th:fragment="formulario-consultor(txtBoton)" th:with="deshabilitarClave = ${deshabilitarClave} ?: false, foco = ${foco} ?: 'nombreUsuario'">
+    <form method="post" th:object="${consultor}" class="formCrud">
+        <div>
+            <h1 class="title-form" th:text="${txtBoton} + ' consultor'"></h1>
+        </div>
+        <div>
+            <label for="nombreUsuario">Usuario</label>
+            <input type="text" th:field="*{nombreUsuario}" class="input-text" readonly>
+            <p th:errors="*{nombreUsuario}" style="color: red; font-size: 12px;"></p>
+        </div>
+        <div>
+            <label for="contrasena">Contraseña</label>
+            <input type="text" th:field="*{contrasena}" class="input-text">
+            <p th:errors="*{contrasena}" style="color: red; font-size: 12px;"></p>
+        </div>
+        <div>
+            <input type="submit" th:value="${txtBoton}" class="input-button">
+        </div>
+    </form>
+
+    <script th:inline="javascript">
+        document.getElementById([[${foco}]]).focus();
+        document.getElementById([[${foco}]]).select();
+    </script>
+</div>

@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org" th:replace="~{fragmentos/plantilla-maestra-clientes::html(~{::title}, ~{::body})}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ofertas de trabajo</title>
+</head>
+<body th:remove="tag">
+   <th:block th:if="${oferta}">
+        <div th:replace="~{fragmentos/formulario-oferta(txtBoton = 'Modificar', deshabilitarClave = true, foco = 'titulo')}"></div>
+    </th:block>
+    <p th:if="${mensaje}" th:utext="${mensaje}"></p>
+</body>
+</html>

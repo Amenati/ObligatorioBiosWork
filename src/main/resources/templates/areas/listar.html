@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{fragmentos/plantilla-maestra-consultores::html(~{::title}, ~{::body})}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Áreas</title>
+</head>
+<body th:remove="tag">
+    <h1>Áreas</h1>
+    <form id="busqueda">
+        <div>
+            <input type="search" name="filtro" th:value="${param.filtro}" id="filtro" placeholder="código de area"> <input type="submit" value="Buscar" class="input-button">
+        </div>
+    </form>
+    <p><a href="@{/areas/ingresar}" title="Ingresar"></a></p>
+    <table>
+        <tr>
+            <th>Código</th>
+            <th>Nombre</th>
+        </tr>
+        <tr th:each="a : ${areas}">
+            <td th:text="${a.id}"></td>
+            <td th:text="${a.nombre}"></td>
+            <td>
+                <a th:href="@{/areas/{id}(id=${a.id})}" title="Ver Detalle"><i class="icono icono-detalle"></i></a>&nbsp;&nbsp;
+                <a th:href="@{/areas/modificar(id=${a.id})}" title="Modificar"><i class="icono icono-editar"></i></a>&nbsp;&nbsp;
+                <a th:href="@{/areas/eliminar(id=${a.id})}" title="Eliminar"><i class="icono icono-eliminar"></i></a>
+            </td>
+        </tr>
+    </table>
+    <p th:if="${mensaje}" th:utext="${mensaje}"></p>
+
+    <script>
+        document.getElementById('busqueda').addEventListener('search', function() {
+            document.getElementById('busqueda').submit();
+        });
+
+        document.getElementById('filtro').focus();
+        document.getElementById('filtro').select();
+    </script>
+</body>
+</html>

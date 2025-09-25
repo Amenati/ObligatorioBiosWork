@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{fragmentos/plantilla-maestra-clientes::html(~{::title}, ~{::body})}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Postulante</title>
+</head>
+<body th:remove="tag">
+    <h1>Postulante</h1>
+
+    <th:block th:if="${postulante}">
+        <h2 th:text="${postulante.nombreUsuario}"></h2>
+
+        <img th:if="${postulante.tieneImagen}" th:src="@{img/{nombreUsuario}.png(nombreUsuario = ${postulante.nombreUsuario})}" th:alt="${postulante.nombreUsuario}">
+        <img th:unless="${postulante.tieneImagen}" th:src="@{img/usrDefault.png}" th:alt="Imagen no disponible">
+        
+        <ul>
+            <li><strong>Usuario:</strong><span th:text="${postulante.nombreUsuario}"></span></li>
+            <li><strong>Cedula:</strong><span th:text="${postulante.cedula}"></span></li>
+            <li><strong>Nombre completo:</strong><span th:text="${postulante.nombreCompleto}"></span></li>
+            <li><strong>Fecha de nacimiento:</strong><span th:text="${postulante.fechaNacimiento}"></span></li>
+            <li><strong>Departamento:</strong><span th:text="${postulante.departamento}"></span></li>
+            <li><strong>Foto:</strong><span th:text="${postulante.foto}"></span></li>
+            <li>
+                <strong>Curriculum:</strong>
+                <a th:if="{postulante.tieneCurriculum}" th:href="@{cv/{curriculum}}" th:text="${curriculum}" target="_blank"></a>
+                <p th:unless="{postulante.tieneCurriculum}" th:text="No ha cargado ningún archivo"></p>
+            </li>
+        </ul>
+
+
+    </th:block>
+        
+    <p th:if="${mensaje}" th:utext="${mensaje}"></p>
+</body>
+</html>
