@@ -3,12 +3,14 @@ package uy.edu.bios.ejemplos.bioswork.modelos;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "usuarios")
 public class Usuario {
     
+    @Id
     @NotBlank
     @Size(min = 3, max = 20, message = "El nombre debe tener entre 3 y 20 caracteres")
     public String nombreUsuario;

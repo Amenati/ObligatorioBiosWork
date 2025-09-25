@@ -3,12 +3,14 @@ package uy.edu.bios.ejemplos.bioswork.modelos;
 import jakarta.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "ofertaTrabajos")
 public class OfertaTrabajo {
     
+    @Id
     @NotNull
     public String id;
     public LocalDateTime fechaPublicacion;

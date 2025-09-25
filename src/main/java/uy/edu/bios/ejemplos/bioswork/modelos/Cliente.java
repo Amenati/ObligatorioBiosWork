@@ -1,6 +1,7 @@
 package uy.edu.bios.ejemplos.bioswork.modelos;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -9,6 +10,7 @@ import jakarta.validation.constraints.Size;
 @Table(name = "clientes")
 public class Cliente {
 
+    @Id
     @NotBlank
     @Size(max = 30)
     public String rut;
