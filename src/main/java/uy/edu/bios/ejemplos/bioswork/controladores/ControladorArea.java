@@ -12,27 +12,28 @@ import jakarta.validation.Valid;
 import uy.edu.bios.ejemplos.bioswork.dominio.Area;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("/areas")
 public class ControladorArea {
 
     @Autowired
     MessageSource messageSource;
 
-    @GetMapping("/areas/ingresar")
+    @GetMapping("/ingresar")
     public String ingresarArea(@ModelAttribute Area area) {
         return "areas/ingresar";
     }
 
-    @PostMapping("/areas/ingresar")
-    public String ingresarArea(@ModelAttribute @Valid Area area, BindingResult result, Model model) {
+    @PostMapping("/ingresar")
+    public String ingresarArea(@ModelAttribute @Valid Area area, BindingResult result, RedirectAttributes attributes) {
         if (result.hasErrors()) {
             return "areas/ingresar";
         }
         
-        model.addAttribute("mensaje", "Área ingresada correctamente");
+        attributes.addFlashAttribute("mensaje", "Área ingresada correctamente");
 
         return "redirect:/areas/listar";
     }

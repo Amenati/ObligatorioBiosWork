@@ -7,7 +7,7 @@
 </head>
 <body th:remove="tag">
     <h1>Eliminar consultor</h1>
-    <th:block th:if="${area}">
+    <th:block th:if="${consultor}">
         <p>Está seguro que desea eliminar el usuario <strong th:text="${consultor.nombreUsuario}"></strong>?</p>
         <form method="post" class="formCrud">      
             <div>
@@ -15,6 +15,6 @@
             </div>
         </form>    
     </th:block>   
-    <p th:if="${mensaje}" th:utext="${mensaje}"></p>
+    <p th:replace="~{fragmentos/mensaje}"></p>
 </body>
 </html>

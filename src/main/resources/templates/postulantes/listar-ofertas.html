@@ -12,7 +12,7 @@
             <input type="search" name="filtro" th:value="${param.filtro}" id="filtro" placeholder="filtrar por id, postulado o sin postular"> <input type="submit" value="Buscar" class="input-button">
         </div>
     </form>
-    <p><a href="@{/ofertas/ingresar}" title="Ingresar"></a></p>
+    <p><a href="@{/ofertas/ingresar}" title="Ingresar">Ingresar</a></p>
     <table>
         <tr>
             <th>Id</th>
@@ -20,7 +20,7 @@
             <th>Fecha de publicación</th>
             <th>Área</th>
         </tr>
-        <tr th:each="o : ${ofertas}">
+        <tr th:each="o : ${ofertasTrabajo}">
             <td th:text="${o.id}"></td>
             <td th:text="${o.titulo}"></td>
             <td th:text="${o.fechaPublicacion}"></td>
@@ -30,7 +30,7 @@
             </td>
         </tr>
     </table>
-    <p th:if="${mensaje}" th:utext="${mensaje}"></p>
+    <p th:replace="~{fragmentos/mensaje}"></p>
 
     <script>
         document.getElementById('busqueda').addEventListener('search', function() {

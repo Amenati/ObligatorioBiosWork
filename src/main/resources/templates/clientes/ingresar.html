@@ -8,6 +8,6 @@
 <body th:remove="tag">
     <div th:replace="~{fragmentos/formulario-cliente('Agregar')}"></div>
 
-    <p th:if="${mensaje}" th:utext="${mensaje}"></p>
+    <p th:replace="~{fragmentos/mensaje}"></p>
 </body>
 </html>

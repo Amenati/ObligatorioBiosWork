@@ -1,5 +1,5 @@
 <div xmlns:th="http://www.thymeleaf.org" th:fragment="formulario-oferta(txtBoton)" th:with="deshabilitarClave = ${deshabilitarClave} ?: false, foco = ${foco} ?: 'id'">
-    <form method="post" th:object="${oferta}" class="formCrud">
+    <form method="post" th:object="${ofertaTrabajo}" class="formCrud">
         <div>
             <h1 class="title-form" th:text="${txtBoton} + ' oferta'"></h1>
         </div>

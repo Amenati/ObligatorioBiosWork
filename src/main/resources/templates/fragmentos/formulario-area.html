@@ -3,9 +3,10 @@
         <div>
             <h1 class="title-form" th:text="${txtBoton} + ' área'"></h1>
         </div>
-         <div> <!-- ESTE CAMPO VA??????-->
+         <div>
             <label for="id">Id</label>
             <input type="text" th:field="*{id}" th:disabled="${deshabilitarClave}" class="input-text">
+            <p th:errors="*{id}" style="color: red; font-size: 12px;"></p>
         </div>
         <div>
             <label for="nombre">Área</label>

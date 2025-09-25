@@ -8,21 +8,21 @@
 <body th:remove="tag">
     <h1>Oferta de Trabajo</h1>
 
-    <th:block th:if="${oferta}">
-        <h2 th:text="${oferta.id} - ${oferta.titulo}"></h2>
+    <th:block th:if="${ofertaTrabajo}">
+        <h2 th:text="${ofertaTrabajo.id} - ${ofertaTrabajo.titulo}"></h2>
         <ul>
-            <li><strong>Id:</strong><span th:text="${oferta.id}"></span></li>
-            <li><strong>Título:</strong><span th:text="${oferta.titulo}"></span></li>
-            <li><strong>Fecha de publicación:</strong><span th:text="${oferta.fechaPublicacion}"></span></li>
-            <li><strong>Fecha de cierre:</strong><span th:text="${oferta.fechaCierre}"></span></li>
-            <li><strong>Área:</strong><span th:text="${oferta.area.nombre}"></span></li>
-            <li><strong>Descripción:</strong><span th:text="${oferta.descripcion}"></span></li>
-            <li><strong>Puestos vacantes:</strong><span th:text="${oferta.vacantes}"></span></li>
+            <li><strong>Id:</strong><span th:text="${ofertaTrabajo.id}"></span></li>
+            <li><strong>Título:</strong><span th:text="${ofertaTrabajo.titulo}"></span></li>
+            <li><strong>Fecha de publicación:</strong><span th:text="${ofertaTrabajo.fechaPublicacion}"></span></li>
+            <li><strong>Fecha de cierre:</strong><span th:text="${ofertaTrabajo.fechaCierre}"></span></li>
+            <li><strong>Área:</strong><span th:text="${ofertaTrabajo.area.nombre}"></span></li>
+            <li><strong>Descripción:</strong><span th:text="${ofertaTrabajo.descripcion}"></span></li>
+            <li><strong>Puestos vacantes:</strong><span th:text="${ofertaTrabajo.puestosVacantes}"></span></li>
         </ul>
 
         <a th:href="@{/ofertas/{id}(id=${o.id})}" title="Postular / Cancelar"></a>
     </th:block>
         
-    <p th:if="${mensaje}" th:utext="${mensaje}"></p>
+    <p th:replace="~{fragmentos/mensaje}"></p>
 </body>
 </html>
