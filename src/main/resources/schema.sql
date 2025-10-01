@@ -1,0 +1,3 @@
+CREATE TABLE IF NOT EXISTS Departamentos (
+    nombre VARCHAR(50) PRIMARY KEY
+)^;

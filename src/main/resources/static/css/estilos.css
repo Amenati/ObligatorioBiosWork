@@ -161,11 +161,14 @@ label {
     left: 50%;
     transform: translate(-50%,-50%);
     width: 280px;
-    /*height: 490px;*/
     padding: 18px;
     border-radius: 5%;
     box-shadow: 4px 4px rgba(128, 108, 23, .4);
     background-color: white;
+}
+
+.formCrud {
+    width: 370px;
 }
 
 label:first-child {
@@ -215,15 +218,15 @@ i.icono-ingresar {
 }*/
 
 i.icono-detalle {
-    background-image: url("../imagenes/iconos/detalle.png");
+    background-image: url("../iconos/detalle.png");
 }
 
 i.icono-editar {
-    background-image: url("../imagenes/iconos/editar.png");
+    background-image: url("../iconos/editar.png");
 }
 
 i.icono-eliminar {
-    background-image: url("../imagenes/iconos/eliminar.png");
+    background-image: url("../iconos/eliminar.png");
 }
 
 

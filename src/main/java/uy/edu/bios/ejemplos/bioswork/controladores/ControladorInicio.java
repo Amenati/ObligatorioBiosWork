@@ -13,10 +13,7 @@ public class ControladorInicio {
         return "inicio";
     }
 
-    @GetMapping("/areas/listar")
-    public String mostrarArea() {
-        return "areas/listar";
-    }
+    
     
 
     
