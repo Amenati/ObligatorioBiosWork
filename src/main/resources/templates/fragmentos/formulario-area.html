@@ -1,13 +1,15 @@
 <div xmlns:th="http://www.thymeleaf.org" th:fragment="formulario-area(txtBoton)" th:with="deshabilitarClave = ${deshabilitarClave} ?: false, foco = ${foco} ?: 'id'">
-    <form method="post" th:object="${area}" class="formCrud">
+    <form method="post" th:object="${area}" class="form-crud">
         <div>
             <h1 class="title-form" th:text="${txtBoton} + ' área'"></h1>
         </div>
-         <div>
-            <label for="id">Id</label>
-            <input type="text" th:field="*{id}" th:disabled="${deshabilitarClave}" class="input-text">
-            <p th:errors="*{id}" style="color: red; font-size: 12px;"></p>
-        </div>
+        <th:block th:if="${deshabilitarClave}">
+            <div>
+                <label for="id">Id</label>
+                <input type="text" th:field="*{id}" th:disabled="${deshabilitarClave}" class="input-text">
+                <p th:errors="*{id}" style="color: red; font-size: 12px;"></p>
+            </div>
+        </th:block>
         <div>
             <label for="nombre">Área</label>
             <input type="text" th:field="*{nombre}" class="input-text">
@@ -15,6 +17,7 @@
         </div>
         <div>
             <input type="submit" th:value="${txtBoton}" class="input-button">
+            <a th:href="@{/areas}" class="cancelar-button">Cancelar</a>
         </div>
     </form>
 

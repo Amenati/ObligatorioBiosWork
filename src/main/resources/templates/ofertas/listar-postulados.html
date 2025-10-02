@@ -6,14 +6,14 @@
     <title>Postulantes</title>
 </head>
 <body th:remove="tag">
-    <h1>Postulantes</h1>
+    <h1 class="title-form listados">Postulantes</h1>
     <form id="busqueda">
         <div>
             <input type="search" name="filtro" th:value="${param.filtro}" id="filtro" placeholder="nombre de usuario"> <input type="submit" value="Buscar" class="input-button">
         </div>
     </form>
-    <p><a href="@{/postulantes/ingresar}" title="Ingresar">Ingresar</a></p>
-    <table>
+    <p><a th:href="@{/postulantes/ingresar}" title="Ingresar"><i class="icono icono-ingresar listados"></i></a></p>
+    <table th:unless="${postulantes.empty}" class="listados listado-table">
         <tr>
             <th>Usuario</th>
             <th>Cédula</th>
@@ -27,7 +27,20 @@
                 <a th:href="@{/postulantes/{nombreUsuario}(nombreUsuario=${p.nombreUsuario})}" title="Ver Detalle"><i class="icono icono-detalle"></i></a>
             </td>
         </tr>
+        <tr>
+            <td colspan="3" class="paginacion">
+                <a th:unless="${postulantes.first}" th:href="@{/postulantes(filtro=${param.filtro}, orden=${param.orden} ?: 'nombreUsuario,asc', pagina = ${postulantes.number} - 1, tamanoPagina = ${param.tamanoPagina})}">&lsaquo; anterior</a>
+                <span th:unless="${postulantes.first} or ${postulantes.last}"> | </span>
+                <a th:unless="${postulantes.last}" th:href="@{/postulantes(filtro=${param.filtro}, orden=${param.orden} ?: 'nombreUsuario,asc', pagina = ${postulantes.number} + 1, tamanoPagina = ${param.tamanoPagina})}">siguiente &rsaquo; </a>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3">
+                Cantidad de postulantes: <span th:text="${postulantes.numberOfElements}"></span> de <span th:text="${postulantes.totalElements}"></span>
+            </td>
+        </tr>
     </table>
+    <p th:if="${postulantes.empty}" style="padding: 10px;">No se encontraron datos</p>
     <p th:replace="~{fragmentos/mensaje}"></p>
 
     <script>

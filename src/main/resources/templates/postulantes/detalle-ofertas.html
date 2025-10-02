@@ -6,10 +6,10 @@
     <title>Oferta de Trabajo</title>
 </head>
 <body th:remove="tag">
-    <h1>Oferta de Trabajo</h1>
+    <h1 class="title-form">Oferta de Trabajo</h1>
 
     <th:block th:if="${ofertaTrabajo}">
-        <h2 th:text="${ofertaTrabajo.id} - ${ofertaTrabajo.titulo}"></h2>
+        <h2 th:text="${ofertaTrabajo.id} - ${ofertaTrabajo.titulo}" class="title-form"></h2>
         <ul>
             <li><strong>Id:</strong><span th:text="${ofertaTrabajo.id}"></span></li>
             <li><strong>Título:</strong><span th:text="${ofertaTrabajo.titulo}"></span></li>
@@ -22,7 +22,12 @@
 
         <a th:href="@{/ofertas/{id}(id=${o.id})}" title="Postular / Cancelar"></a>
     </th:block>
-        
+    <div>
+        &nbsp; 
+    </div>
+    <div>
+       &nbsp;&nbsp;<a th:href="@{/ofertasTrabajo}" class="cancelar-button">Volver</a>
+    </div>        
     <p th:replace="~{fragmentos/mensaje}"></p>
 </body>
 </html>

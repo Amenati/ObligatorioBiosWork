@@ -6,15 +6,21 @@
     <title>Áreas</title>
 </head>
 <body th:remove="tag">
-    <h1>Área</h1>
+    <h1 class="title-form">Área</h1>
 
     <th:block th:if="${area}">
-        <h2 th:text="${area.nombre}"></h2>
+        <h2 th:text="${area.nombre}" class="title-form"></h2>
         <ul>
             <li><strong>Id:</strong><span th:text="${area.id}"></span></li>
             <li><strong>Nombre:</strong><span th:text="${area.nombre}"></span></li>
         </ul>
     </th:block>
+    <div>
+        &nbsp; 
+    </div>
+    <div>
+       &nbsp;&nbsp;<a th:href="@{/areas}" class="cancelar-button">Volver</a>
+    </div>
         
     <p th:replace="~{fragmentos/mensaje}"></p>
 </body>

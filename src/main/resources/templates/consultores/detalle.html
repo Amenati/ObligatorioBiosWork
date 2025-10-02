@@ -6,15 +6,21 @@
     <title>Consultores</title>
 </head>
 <body th:remove="tag">
-    <h1>Consultor</h1>
+    <h1 class="title-form">Consultor</h1>
 
     <th:block th:if="${consultor}">
-        <h2 th:text="${consultor.nombreUsuario}"></h2>
+        <h2 th:text="${consultor.nombreUsuario}" class="title-form"></h2>
         <ul>
-            <li><strong>Usuario:</strong><span th:text="${consultor.nombreconsultor}"></span></li>
-            <li><strong>Contraseña:</strong><span th:text="${usuario.contrasena}"></span></li>
+            <li><strong>Usuario:</strong><span th:text="${consultor.nombreUsuario}"></span></li>
+            <li><strong>Contraseña:</strong><span th:text="${consultor.contrasena}"></span></li>
         </ul>
     </th:block>
+    <div>
+        &nbsp; 
+    </div>
+    <div>
+       &nbsp;&nbsp;<a th:href="@{/consultores}" class="cancelar-button">Volver</a>
+    </div>
         
     <p th:replace="~{fragmentos/mensaje}"></p>
 </body>

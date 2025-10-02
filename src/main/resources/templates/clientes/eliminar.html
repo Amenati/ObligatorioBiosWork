@@ -5,13 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Clientes</title>
 </head>
-<body th:remove="tag">
-    <h1>Eliminar cliente</h1>
-    <th:block th:if="${cliente}">
-        <p>Está seguro que desea eliminar el usuario <strong th:text="${cliente.nombreUsuario}"></strong>?</p>
-        <form method="post" class="formCrud">      
+<body th:remove="tag">    
+    <th:block th:if="${cliente}">             
+        <form method="post" class="form-crud form-eliminar"> 
+            <div>
+                <h1 class="title-form">Eliminar cliente</h1>
+            </div> 
+            <div>
+                <p>Está seguro que desea eliminar el cliente <strong th:text="${cliente.nombreUsuario}"></strong>?</p>
+            </div>    
             <div>
                 <input type="submit" value="Eliminar" class="input-button">
+                <a th:href="@{/areas}" class="cancelar-button">Cancelar</a>
             </div>
         </form>    
     </th:block>   

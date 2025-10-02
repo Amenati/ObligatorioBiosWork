@@ -6,12 +6,17 @@
     <title>Áreas</title>
 </head>
 <body th:remove="tag">
-    <h1>Eliminar área</h1>
-    <th:block th:if="${area}">
-        <p>Está seguro que desea eliminar el área <strong th:text="${area.nombre}"></strong>?</p>
-        <form method="post" class="formCrud">      
+    <th:block th:if="${area}">        
+        <form method="post" class="form-crud form-eliminar">  
+            <div>
+                <h1 class="title-form">Eliminar área</h1>
+            </div>
+            <div>
+                <p>Está seguro que desea eliminar el área <strong th:text="${area.nombre}"></strong>?</p>
+            </div>    
             <div>
                 <input type="submit" value="Eliminar" class="input-button">
+                <a th:href="@{/areas}" class="cancelar-button">Cancelar</a>
             </div>
         </form>    
     </th:block>   

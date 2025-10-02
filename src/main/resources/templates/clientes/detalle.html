@@ -6,9 +6,9 @@
     <title>Clientes</title>
 </head>
 <body th:remove="tag">
-    <h1>Cliente</h1>
+    <h1 class="title-form">Cliente</h1>
 
-    <th:block th:if="${cliente}">
+    <th:block th:if="${cliente}" class="title-form">
         <h2 th:text="${cliente.nombreUsuario}"></h2>
         <ul>
             <li><strong>Usuario:</strong><span th:text="${cliente.nombreUsuario}"></span></li>
@@ -18,6 +18,12 @@
             <li><strong>URL:</strong><span th:text="${cliente.url}"></span></li>
         </ul>
     </th:block>
+    <div>
+        &nbsp; 
+    </div>
+    <div>
+       &nbsp;&nbsp;<a th:href="@{/clientes}" class="cancelar-button">Volver</a>
+    </div>
         
     <p th:replace="~{fragmentos/mensaje}"></p>
 </body>

@@ -6,14 +6,14 @@
     <title>Consultores</title>
 </head>
 <body th:remove="tag">
-    <h1>Consultores</h1>
+    <h1 class="title-form listados">Consultores</h1>
     <form id="busqueda">
         <div>
             <input type="search" name="filtro" th:value="${param.filtro}" id="filtro" placeholder="nombre de usuario"> <input type="submit" value="Buscar" class="input-button">
         </div>
     </form>
-    <p><a href="@{/consultores/ingresar}" title="Ingresar">Ingresar</a></p>
-    <table>
+    <p><a th:href="@{/consultores/ingresar}" title="Ingresar"><i class="icono icono-ingresar listados"></i></a></p>
+    <table th:unless="${consultores.empty}" class="listados listado-table">
         <tr>
             <th>Consultores</th>
         </tr>
@@ -25,7 +25,20 @@
                 <a th:href="@{/consultores/eliminar(nombreUsuario=${c.nombreUsuario})}" title="Eliminar"><i class="icono icono-eliminar"></i></a>
             </td>
         </tr>
+        <tr>
+            <td class="paginacion">
+                <a th:unless="${consultores.first}" th:href="@{/consultores(filtro=${param.filtro}, orden=${param.orden} ?: 'nombreUsuario,asc', pagina = ${consultores.number} - 1, tamanoPagina = ${param.tamanoPagina})}">&lsaquo; anterior</a>
+                <span th:unless="${consultores.first} or ${consultores.last}"> | </span>
+                <a th:unless="${consultores.last}" th:href="@{/consultores(filtro=${param.filtro}, orden=${param.orden} ?: 'nombreUsuario,asc', pagina = ${consultores.number} + 1, tamanoPagina = ${param.tamanoPagina})}">siguiente &rsaquo; </a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Cantidad de consultores: <span th:text="${consultores.numberOfElements}"></span> de <span th:text="${consultores.totalElements}"></span>
+            </td>
+        </tr>   
     </table>
+    <p th:if="${consultores.empty}" style="padding: 10px;">No se encontraron datos</p>
     <p th:replace="~{fragmentos/mensaje}"></p>
 
     <script>

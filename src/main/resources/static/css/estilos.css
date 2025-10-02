@@ -67,69 +67,13 @@ nav.menu-principal li:hover a {
     background-color: rgb(74, 114, 126);
     transition: background-color .33s;
 }
- 
-/*nav.menu-principal li ul {
-    position: absolute;
-    display: block;
-    visibility: hidden;
-    opacity: 0;
-    background-color: tomato;
-    transition: visibility 0s, opacity .33s;
-}
- 
-nav.menu-principal ul ~ ul:last-child ul {
-    right: 0px;
-}
- 
-nav.menu-principal li:hover ul {
-    visibility: visible;
-    opacity: 1;
-}
- 
-nav.menu-principal li:hover li {
-    float: none;
-}
- 
-nav.menu-principal li:hover li:hover a {
-    background-color: lightsalmon;
-}*/
+
  
 main.contenido {
     margin: 20px;
+    color: rgb(3, 67, 110);
 }
  
-/*div.enlaces-interes {
-    display: inline-block;
-    border: 1px solid firebrick;
-    border-radius: 10px;
-    background-color: mistyrose;
-    overflow: hidden;
-}
- 
-div.enlaces-interes h4 {
-    margin: 0;
-    padding: 8px;
-    background-color: firebrick;
-    color: white;
-}
- 
-div.enlaces-interes ul {
-    margin: 10px;
-    padding: 0;
-    list-style-type: none;
-}
- 
-div.enlaces-interes li {
-    line-height: 1.5em;
-}
- 
-div.enlaces-interes a {
-    text-decoration: none;
-    color: firebrick;
-    font-weight: bold;
-}
- */
-
 
 form div {
     margin-top: 1.5em;
@@ -151,15 +95,18 @@ label {
 
 .title-form {
     display: flex;
-    justify-content: center;
+    /*justify-content: center;*/
     color: rgb(0, 113, 188);
 }
 
-.formCrud {
-    position: absolute;
+.form-crud {
+    /*position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);*/
+    position: relative;
+    top: 15px;
+    left: 15px;
     width: 280px;
     padding: 18px;
     border-radius: 5%;
@@ -167,8 +114,13 @@ label {
     background-color: white;
 }
 
-.formCrud {
+.form-eliminar {
     width: 370px;
+    text-align: center;
+}
+
+.form-eliminar h1 {
+    justify-content: center;
 }
 
 label:first-child {
@@ -201,6 +153,10 @@ label:first-child {
     font-size: 16px;
 }
 
+.input-button[value=Buscar] {
+    padding: 3px 12px;
+}
+
 input[type=search] {
     padding: 3px;
 }
@@ -212,10 +168,10 @@ i.icono {
     background-size: cover;
     vertical-align: middle;
 }
-/*
+
 i.icono-ingresar {
-    background-image: url("../imagenes/iconos/add_circle_FILL1_wght400_GRAD0_opsz24.png");
-}*/
+    background-image: url("../iconos/ingresar.png");
+}
 
 i.icono-detalle {
     background-image: url("../iconos/detalle.png");
@@ -229,5 +185,73 @@ i.icono-eliminar {
     background-image: url("../iconos/eliminar.png");
 }
 
+.cancelar-button {
+    background-color: rgb(225, 224, 224);
+    color: rgb(35, 102, 156);
+    padding: 11px 18px 9px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    text-decoration: none;
+}
 
+
+
+/* ### Tablas ### */
+
+/*.listado-table{
+    position: relative;
+    float: right;
+    top: 76px;
+    right: 20px;    
+    width: 80%;   
+    border-collapse: collapse;
+    margin-top: 10px;
+    z-index: -1;
+}*/
+
+.listados {
+    /*position: absolute;
+    
+    left: 50%; 
+    transform: translate(-50%,-0%);  */
+    position: relative;
+    top: 15px;
+    left: 15px;
+    /*width: 50%;  */ 
+    border-collapse: collapse;
+    margin-top: 10px;
+    color: rgb(3, 67, 110);
+}
+
+.listado-table {
+    border-radius: 5%;
+    box-shadow: 4px 4px rgba(128, 108, 23, .4);
+}
+
+
+.listado-table th{
+    position: sticky;
+    top: 87px;
+    background-color: rgb(35, 102, 156);
+    font-family: sans-serif;
+    font-size: 16px;
+    color: white;
+}
+
+.listado-table td {
+    text-align: center;
+    padding: 10px 10px;
+}
+
+.paginacion {
+    text-align: left;   
+}
+
+.paginacion a {
+    text-decoration: none;
+    color: rgb(3, 67, 110);
+    font-weight: bold;
+}
 

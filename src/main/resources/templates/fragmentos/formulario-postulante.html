@@ -1,11 +1,11 @@
 <div xmlns:th="http://www.thymeleaf.org" th:fragment="formulario-postulante(txtBoton)" th:with="deshabilitarClave = ${deshabilitarClave} ?: false, foco = ${foco} ?: 'id'">
-    <form  method="post" enctype="multipart/form-data" th:object="${postulante}" class="formCrud">
+    <form  method="post" enctype="multipart/form-data" th:object="${postulante}" class="form-crud">
         <div>
             <h1 class="title-form" th:text="${txtBoton} + ' postulante'"></h1>
         </div>
         <div>
             <label for="nombreUsuario">Usuario</label>
-            <input type="text" th:field="*{nombreUsuario}" class="input-text" readonly>
+            <input type="text" th:field="*{nombreUsuario}" th:disabled="${deshabilitarClave}" class="input-text">
             <p th:errors="*{nombreUsuario}" style="color: red; font-size: 12px;"></p>
         </div>
         <div>
@@ -44,6 +44,7 @@
         </div>  
         <div>
             <input type="submit" th:value="${txtBoton}" class="input-button">
+            <a th:href="@{/postulantes}" class="cancelar-button">Cancelar</a>
         </div>
     </form>
 

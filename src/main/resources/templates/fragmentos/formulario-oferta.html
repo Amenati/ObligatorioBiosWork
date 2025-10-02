@@ -1,16 +1,16 @@
 <div xmlns:th="http://www.thymeleaf.org" th:fragment="formulario-oferta(txtBoton)" th:with="deshabilitarClave = ${deshabilitarClave} ?: false, foco = ${foco} ?: 'id'">
-    <form method="post" th:object="${ofertaTrabajo}" class="formCrud">
+    <form method="post" th:object="${ofertaTrabajo}" class="form-crud">
         <div>
             <h1 class="title-form" th:text="${txtBoton} + ' oferta'"></h1>
         </div>
         <div>
             <label for="id">Número</label>
-            <input type="text" th:field="*{id}" class="input-text" readonly>
+            <input type="text" th:field="*{id}" class="input-text" th:disabled="${deshabilitarClave}">
             <p th:errors="*{id}" style="color: red; font-size: 12px;"></p>
         </div>
         <div>
             <label for="fechaApertura">Fecha Apertura</label>
-            <input type="text" th:field="*{fechaApertura}" class="input-text" readonly>
+            <input type="text" th:field="*{fechaApertura}" class="input-text">
             <p th:errors="*{fechaApertura}" style="color: red; font-size: 12px;"></p>
         </div>
         <div>
@@ -43,6 +43,7 @@
         </div> 
         <div>
             <input type="submit" th:value="${txtBoton}" class="input-button">
+            <a th:href="@{/ofertasTrabajo}" class="cancelar-button">Cancelar</a>
         </div>
     </form>
 

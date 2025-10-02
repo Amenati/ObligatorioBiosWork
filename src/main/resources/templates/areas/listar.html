@@ -6,14 +6,14 @@
     <title>Áreas</title>
 </head>
 <body th:remove="tag">
-    <h1>Áreas</h1>
-    <form id="busqueda">
+    <h1 class="title-form listados">Áreas</h1>
+    <form id="busqueda" class="listados">
         <div>
             <input type="search" name="filtro" th:value="${param.filtro}" id="filtro" placeholder="código de area"> <input type="submit" value="Buscar" class="input-button">
         </div>
     </form>
-    <p><a th:href="@{/areas/ingresar}" title="Ingresar">Ingresar</a></p>
-    <table>
+    <p><a th:href="@{/areas/ingresar}" title="Ingresar"><i class="icono icono-ingresar listados"></i></a></p>
+    <table  th:unless="${areas.empty}" class="listados listado-table">
         <tr>
             <th>Código</th>
             <th>Nombre</th>
@@ -27,7 +27,20 @@
                 <a th:href="@{/areas/eliminar(id=${a.id})}" title="Eliminar"><i class="icono icono-eliminar"></i></a>
             </td>
         </tr>
+        <tr>
+            <td colspan="2" class="paginacion">
+                <a th:unless="${areas.first}" th:href="@{/areas(filtro=${param.filtro}, orden=${param.orden} ?: 'id,asc', pagina = ${areas.number} - 1, tamanoPagina = ${param.tamanoPagina})}">&lsaquo; anterior</a>
+                <span th:unless="${areas.first} or ${areas.last}"> | </span>
+                <a th:unless="${areas.last}" th:href="@{/areas(filtro=${param.filtro}, orden=${param.orden} ?: 'id,asc', pagina = ${areas.number} + 1, tamanoPagina = ${param.tamanoPagina})}">siguiente &rsaquo; </a>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                Cantidad de áreas: <span th:text="${areas.numberOfElements}"></span> de <span th:text="${areas.totalElements}"></span>
+            </td>
+        </tr>
     </table>
+    <p th:if="${areas.empty}" style="padding: 10px;">No se encontraron datos</p>
     <p th:replace="~{fragmentos/mensaje}"></p>
 
     <script>

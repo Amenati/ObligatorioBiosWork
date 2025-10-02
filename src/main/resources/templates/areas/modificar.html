@@ -6,14 +6,10 @@
     <title>Áreas</title>
 </head>
 <body th:remove="tag">
-    <!--<form th:action="@{/areas/modificar}" method="post" th:object="${area}" class="formCrud">
-        <div>
-            <h1 class="title-form">Modificar área</h1>
-        </div>-->
-        <th:block th:if="${area}">
-            <div th:replace="~{fragmentos/formulario-area(txtBoton = 'Modificar', deshabilitarClave = true, foco = 'nombre')}"></div>
-        </th:block>
-    <!--</form>-->
+
+    <th:block th:if="${area}">
+        <div th:replace="~{fragmentos/formulario-area(txtBoton = 'Modificar', deshabilitarClave = true, foco = 'nombre')}"></div>
+    </th:block>
 
     <p th:replace="~{fragmentos/mensaje}"></p>
 </body>

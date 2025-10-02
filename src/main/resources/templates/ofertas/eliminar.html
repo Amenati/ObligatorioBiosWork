@@ -5,13 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ofertas de trabajo</title>
 </head>
-<body th:remove="tag">
-    <h1>Eliminar oferta</h1>
-    <th:block th:if="${ofertaTrabajo}">
-        <p>Está seguro que desea eliminar la oferta número <strong th:text="${ofertaTrabajo.id}"></strong>(<strong th:text="${ofertaTrabajo.titulo}"></strong>)?</p>
-        <form method="post" class="formCrud">      
+<body th:remove="tag">    
+    <th:block th:if="${ofertaTrabajo}">        
+        <form method="post" class="form-crud form-eliminar"> 
+            <div>
+                <h1 class="title-form">Eliminar oferta</h1>
+            </div> 
+            <div>
+                <p>Está seguro que desea eliminar la oferta número <strong th:text="${ofertaTrabajo.id}"></strong>(<strong th:text="${ofertaTrabajo.titulo}"></strong>)?</p>
+            </div>    
             <div>
                 <input type="submit" value="Eliminar" class="input-button">
+                <a th:href="@{/areas}" class="cancelar-button">Cancelar</a>
             </div>
         </form>    
     </th:block>   

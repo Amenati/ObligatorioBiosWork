@@ -6,14 +6,14 @@
     <title>Clientes</title>
 </head>
 <body th:remove="tag">
-    <h1>Ofertas de Trabajo</h1>
+    <h1 class="title-form listados">Ofertas de Trabajo</h1>
     <form id="busqueda">
         <div>
             <input type="search" name="filtro" th:value="${param.filtro}" id="filtro" placeholder="filtrar por id, postulado o sin postular"> <input type="submit" value="Buscar" class="input-button">
         </div>
     </form>
-    <p><a href="@{/ofertas/ingresar}" title="Ingresar">Ingresar</a></p>
-    <table>
+    <p><a th:href="@{/ofertas/ingresar}" title="Ingresar"><i class="icono icono-ingresar listados"></i></a></p>
+    <table th:unless="${ofertasTrabajo.empty}" class="listados listado-table">
         <tr>
             <th>Id</th>
             <th>Título</th>
@@ -29,7 +29,20 @@
                 <a th:href="@{/ofertas/{id}(id=${o.id})}" title="Ver Detalle"><i class="icono icono-detalle"></i></a>
             </td>
         </tr>
+        <tr>
+            <td colspan="4" class="paginacion">
+                <a th:unless="${ofertasTrabajo.first}" th:href="@{/ofertasTrabajo(filtro=${param.filtro}, orden=${param.orden} ?: 'id,asc', pagina = ${ofertasTrabajo.number} - 1, tamanoPagina = ${param.tamanoPagina})}">&lsaquo; anterior</a>
+                <span th:unless="${ofertasTrabajo.first} or ${ofertasTrabajo.last}"> | </span>
+                <a th:unless="${ofertasTrabajo.last}" th:href="@{/ofertasTrabajo(filtro=${param.filtro}, orden=${param.orden} ?: 'id,asc', pagina = ${ofertasTrabajo.number} + 1, tamanoPagina = ${param.tamanoPagina})}">siguiente &rsaquo; </a>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="4">
+                Cantidad de ofertas: <span th:text="${ofertasTrabajo.numberOfElements}"></span> de <span th:text="${ofertasTrabajo.totalElements}"></span>
+            </td>
+        </tr>        
     </table>
+    <p th:if="${ofertasTrabajo.empty}" style="padding: 10px;">No se encontraron datos</p>
     <p th:replace="~{fragmentos/mensaje}"></p>
 
     <script>
