@@ -9,6 +9,6 @@ import uy.edu.bios.ejemplos.bioswork.dominio.Postulante;
 
 public interface IRepositorioPostulantes extends JpaRepository<Postulante, String> {
     
-    @Query("Select p From Postulante p Where nombreUsuario = ?1")
+    @Query("Select p From Postulante p Where nombreUsuario Like CONCAT('%', ?1, '%')")
     Page<Postulante> buscar(String filtro, Pageable pageable);
 }

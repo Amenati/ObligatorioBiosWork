@@ -2,19 +2,31 @@ package uy.edu.bios.ejemplos.bioswork.dominio;
 
 import java.sql.Date;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PastOrPresent;
 
+@Entity
+@Table(name = "postulaciones")
 public class Postulacion {
 
     @NotNull
     @PastOrPresent
+    @Column(nullable = false)
     private Date fechaPostulacion;
 
+    @Id
     @NotNull
+    @ManyToOne(optional = false)
     private OfertaTrabajo ofertaTrabajo;
 
     @NotNull
+    @ManyToOne(optional = false)
     private Postulante postulante;
 
 

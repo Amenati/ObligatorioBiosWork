@@ -8,35 +8,42 @@ import jakarta.validation.constraints.Size;
 
 import java.time.LocalDate;
 
-//import jakarta.persistence.Entity;
-//import jakarta.persistence.Table;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.PrimaryKeyJoinColumn;
+import jakarta.persistence.Table;
 
-//@Entity
-//@Table(name = "postulantes")
+@Entity
+@Table(name = "postulantes")
+@PrimaryKeyJoinColumn(name = "nombreUsuario", referencedColumnName = "nombreUsuario")
 public class Postulante extends Usuario{
         
    @NotBlank
    @Size(min = 7, max=8)
+   @Column(nullable = false, length = 8)
    private String cedula;
 
    @NotBlank
    @Size(max = 50)
+   @Column(nullable = false, length = 50)
    private String nombreCompleto;
             
    @NotBlank
    @Past
+   @Column(nullable = false)
    private LocalDate fechaNacimiento;
 
    @NotBlank
    @Size(max = 30)
+   @Column(nullable = false, length = 30)
    private String departamentoResidencia;
 
    //@Size(max = 2048576, message = "La imagen no puede superar 2 MB")
-   private Byte[] foto; 
+   //private Byte[] foto; 
 
-   @NotNull
+   //@NotNull
    //@Size(max = 5048576, message = "El CV no puede superar 5 MB")
-   private Byte[] curriculum;
+   //private Byte[] curriculum;
 
    private boolean tieneImagen;
 
@@ -87,7 +94,7 @@ public class Postulante extends Usuario{
    }
 
 
-   public Byte[] getFoto() {
+   /*public Byte[] getFoto() {
       return foto;
    }
 
@@ -104,7 +111,7 @@ public class Postulante extends Usuario{
 
    public void setCurriculum(Byte[] curriculum) {
       this.curriculum = curriculum;
-   }
+   }*/
 
 
    public boolean isTieneImagen() {
@@ -130,14 +137,14 @@ public class Postulante extends Usuario{
 
    public Postulante() {}
 
-   public Postulante(String nombreUsuario, String contraseña, String cedula, String nombreCompleto, LocalDate fechaNacimiento, String departamentoResidencia, Byte[] foto, Byte[] curriculum, boolean tieneImagen, boolean tieneCurriculum) {
+   public Postulante(String nombreUsuario, String contraseña, String cedula, String nombreCompleto, LocalDate fechaNacimiento, String departamentoResidencia, /*Byte[] foto, Byte[] curriculum,*/ boolean tieneImagen, boolean tieneCurriculum) {
       super(nombreUsuario, contraseña);
       this.cedula = cedula;
       this.nombreCompleto = nombreCompleto;
       this.fechaNacimiento = fechaNacimiento;
       this.departamentoResidencia = departamentoResidencia;
-      this.foto = foto;
-      this.curriculum = curriculum;
+      //this.foto = foto;
+      //this.curriculum = curriculum;
       this.tieneImagen = tieneImagen;
       this.tieneCurriculum = tieneCurriculum;
    } 

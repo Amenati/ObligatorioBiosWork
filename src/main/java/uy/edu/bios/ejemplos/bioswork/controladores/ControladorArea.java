@@ -26,7 +26,7 @@ public class ControladorArea {
     @Autowired
     private IServicioAreas servicioAreas;
 
-    @GetMapping({"/", "/listar"})
+    @GetMapping({"", "/listar"})
     public String listarAreas(@RequestParam(required = false) String filtro, Pageable pageable, Model model) {
         Page<Area> areas = servicioAreas.buscar(filtro, pageable);
 

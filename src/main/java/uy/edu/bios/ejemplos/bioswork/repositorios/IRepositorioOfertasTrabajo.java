@@ -11,4 +11,9 @@ public interface IRepositorioOfertasTrabajo extends JpaRepository<OfertaTrabajo,
     
     @Query("Select o From OfertaTrabajo o Where Cast(id As String) = ?1")
     Page<OfertaTrabajo> buscar(String filtro, Pageable pageable);
+
+    @Query("Select o From OfertaTrabajo o Where fechaCierre <= ")
+    Page<OfertaTrabajo> listarVigentes(Pageable pageable);
+
+    
 }

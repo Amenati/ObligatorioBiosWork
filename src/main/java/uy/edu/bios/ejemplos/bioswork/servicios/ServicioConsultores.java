@@ -24,7 +24,7 @@ public class ServicioConsultores implements IServicioConsultores {
     }
 
     @Override
-    @Transactional
+    //@Transactional
     public Page<Consultor> buscar(String filtro, Pageable pageable) {
        if (filtro == null || filtro.isBlank()) {
             return listar(pageable);
@@ -66,7 +66,7 @@ public class ServicioConsultores implements IServicioConsultores {
     public void eliminar(String nombreUsuario) throws ExcepcionBiosWork {
         Consultor consultorExistente = repositorioConsultores.findById(nombreUsuario).orElse(null);
         
-        if (consultorExistente != null) {
+        if (consultorExistente == null) {
             throw new ExcepcionNoExiste("El consultor no existe");
         }
 

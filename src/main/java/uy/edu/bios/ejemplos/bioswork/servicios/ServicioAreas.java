@@ -24,7 +24,7 @@ public class ServicioAreas implements IServicioAreas {
     }
 
     @Override
-    @Transactional
+    //@Transactional
     public Page<Area> buscar(String filtro, Pageable pageable) {
         if (filtro == null || filtro.isBlank()) {
             return listar(pageable);

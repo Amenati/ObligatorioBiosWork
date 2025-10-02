@@ -8,39 +8,54 @@ import jakarta.validation.constraints.PastOrPresent;
 import jakarta.validation.constraints.Size;
 
 import java.time.LocalDateTime;
-//import jakarta.persistence.Entity;
-//import jakarta.persistence.Table;
 
-//@Entity
-//@Table(name = "ofertaTrabajos")
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "ofertas_trabajo")
 public class OfertaTrabajo {
     
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @NotNull
     private long id;
 
     @NotNull
-    @PastOrPresent  
+    @PastOrPresent 
+    @Column(nullable = false) 
     private LocalDateTime fechaPublicacion;
 
     @NotNull
     @FutureOrPresent
+    @Column(nullable = false)
     private LocalDateTime fechaCierre;
 
     @NotBlank
     @Size(max = 100)
+    @Column(nullable = false, length = 100)
     private String titulo;
 
     @NotBlank
+    @Column(nullable = false, length = 1000)
     private String descripcion;
 
     @NotNull
     @Min(value = 1)
+    @Column(nullable = false)
     private Integer puestosVacantes;
 
     @NotNull
+    @ManyToOne(optional = false)
     private Area area;
 
     @NotNull
+    @ManyToOne(optional = false)
     private Cliente cliente;
 
 
