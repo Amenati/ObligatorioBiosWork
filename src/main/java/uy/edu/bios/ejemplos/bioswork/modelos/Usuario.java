@@ -4,6 +4,8 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -19,6 +21,9 @@ public class Usuario {
     @Size(min = 4, message = "La contraseña debe tener un minimo de 4 caracteres")
     public String contraseña;
 
+    @ManyToOne
+    @JoinColumn(name = "rol")
+    public Rol rol;
 
 
     public String getNombreUsuario(){
@@ -29,8 +34,25 @@ public class Usuario {
         this.nombreUsuario = nombreUsuario;
     }
 
-    public Usuario(String nombreUsuario,String contraseña){
+    public Rol getRol() {
+        return rol;
+    }
+
+    public void setRol(Rol rol) {
+        this.rol = rol;
+    }
+
+    public String getContraseña() {
+        return contraseña;
+    }
+
+    public void setContraseña(String contraseña) {
+        this.contraseña = contraseña;
+    }
+
+        public Usuario(String nombreUsuario,String contraseña,Rol rol){
         this.nombreUsuario = nombreUsuario;
         this.contraseña = contraseña;
+        this.rol = rol;
     }
 }

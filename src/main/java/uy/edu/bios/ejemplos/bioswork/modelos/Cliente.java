@@ -39,10 +39,20 @@ public class Cliente {
         this.nombre = nombre;
     }
 
+    
+    public String getUrlWeb() {
+        return urlWeb;
+    }
+
+    public void setUrlWeb(String urlWeb) {
+        this.urlWeb = urlWeb;
+    }
+
      
     public Cliente(@NotBlank @Size(max = 30) String rut, @NotBlank @Size(max = 30) String nombre, String urlWeb) {
         this.rut = rut;
         this.nombre = nombre;
         this.urlWeb = urlWeb;
     }
+
 }

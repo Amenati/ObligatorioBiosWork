@@ -97,6 +97,10 @@ nav.menu-principal li:hover li:hover a {
 main.contenido {
     margin: 20px;
 }
+
+.texto-centro {
+    text-align: center;
+}
  
 /*div.enlaces-interes {
     display: inline-block;
