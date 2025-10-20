@@ -2,10 +2,14 @@ package uy.edu.bios.ejemplos.bioswork.modelos;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
+
+import java.util.Set;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -21,9 +25,11 @@ public class Usuario {
     @Size(min = 4, message = "La contraseña debe tener un minimo de 4 caracteres")
     public String contraseña;
 
-    @ManyToOne
-    @JoinColumn(name = "rol")
-    public Rol rol;
+    @ManyToMany
+    @JoinTable(joinColumns = { @JoinColumn(name = "usuario_nombre_usuario") }, inverseJoinColumns = { @JoinColumn(name = "rol_nombre_rol") })
+    public Set<Rol> rol;
+
+    private boolean activo;
 
 
     public String getNombreUsuario(){
@@ -34,12 +40,12 @@ public class Usuario {
         this.nombreUsuario = nombreUsuario;
     }
 
-    public Rol getRol() {
-        return rol;
+    public boolean isActivo() {
+    return activo;
     }
 
-    public void setRol(Rol rol) {
-        this.rol = rol;
+    public void setActivo(boolean activo) {
+        this.activo = activo;
     }
 
     public String getContraseña() {
@@ -50,9 +56,18 @@ public class Usuario {
         this.contraseña = contraseña;
     }
 
-        public Usuario(String nombreUsuario,String contraseña,Rol rol){
+    public Usuario(){
+
+    }
+
+        public Usuario(String nombreUsuario,String contraseña,Set<Rol> rol,boolean activo){
         this.nombreUsuario = nombreUsuario;
         this.contraseña = contraseña;
         this.rol = rol;
+        this.activo = activo;
     }
+
+        public Set<Rol> getRol() {
+            return this.rol;
+        }
 }

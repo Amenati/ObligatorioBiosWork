@@ -9,5 +9,4 @@ public class BiosworkApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(BiosworkApplication.class, args);
 	}
-
 }

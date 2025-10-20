@@ -17,7 +17,4 @@ public class ControladorInicio {
     public String mostrarArea() {
         return "areas/listar";
     }
-    
-
-    
 }

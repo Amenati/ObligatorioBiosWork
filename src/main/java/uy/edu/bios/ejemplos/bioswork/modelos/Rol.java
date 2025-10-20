@@ -20,9 +20,17 @@ public class Rol {
 
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false, unique = true, name = "nombre_rol")
     private NombreRol nombreRol;
 
+
+    public NombreRol getNombreRol() {
+        return this.nombreRol;
+    }
+
+    public void setNombreRol(NombreRol nombreRol) {
+        this.nombreRol = nombreRol;
+    }
 
     public Rol() {
         this(null);
@@ -39,13 +47,4 @@ public class Rol {
     public void setId(Long id) {
         this.id = id;
     }
-
-    public NombreRol getNombreRol() {
-        return nombreRol;
-    }
-
-    public void setNombreRol(NombreRol nombreRol) {
-        this.nombreRol = nombreRol;
-    }
-
 }

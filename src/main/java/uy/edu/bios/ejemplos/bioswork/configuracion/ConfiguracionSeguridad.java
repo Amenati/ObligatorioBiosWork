@@ -34,18 +34,39 @@ import org.springframework.web.servlet.support.SessionFlashMapManager;
 @EnableWebSecurity
 public class ConfiguracionSeguridad {
 
+
     @Bean
-    public UserDetailsService authenticationManager(){
-        InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
+    public SecurityFilterChain securityFilterChain(HttpSecurity http)throws Exception{
+        http.authorizeHttpRequests(authorize -> authorize
+        .requestMatchers("/**").permitAll()
+        // .requestMatchers("/fragmentos/**").permitAll()
+        .requestMatchers("/ingresar/**").permitAll()
+        .requestMatchers("/clientes/eliminar").hasAnyAuthority("consultor")
+        .requestMatchers("/ofertas/**").access(new WebExpressionAuthorizationManager("isAnonymous() or hasAuthority('postulante')"))
+        .anyRequest().authenticated())
+        .formLogin(login -> login.permitAll());
 
-        manager.createUser(
-            org.springframework.security.core.userdetails.User.withUsername("con")
-            .password("con123")
-            .authorities("CONSULTOR").build()
-            );
-
-            return manager;
+        return http.build();
     }
+
+    @Bean
+    public WebSecurityCustomizer webSecurityCustomizer(){
+        return (web) -> web.ignoring()
+        .requestMatchers("/css/**","/imagenes/**","/iconos/**");
+    }
+
+    // @Bean
+    // public UserDetailsService authenticationManager(){
+    //     InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
+
+    //     manager.createUser(
+    //         org.springframework.security.core.userdetails.User.withUsername("con")
+    //         .password("con123")
+    //         .authorities("CONSULTOR").build()
+    //         );
+
+    //         return manager;
+    // }
 
 }
 
